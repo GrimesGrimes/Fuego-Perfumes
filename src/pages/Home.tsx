@@ -99,13 +99,13 @@ export default function Home() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-10">
                         <p className="text-gold text-sm font-semibold tracking-widest uppercase mb-3">
-                            Vista rápida
+                            DESCUBRE
                         </p>
                         <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-                            Explora fragancias en 3D
+                            Tu próxima firma empieza aquí
                         </h2>
                         <p className="text-white/60 max-w-2xl mx-auto">
-                            Toca cualquier fragancia para ver detalles y agregar al carrito.
+                            Explora cada fragancia, revisa sus notas y elige la que va contigo. Agrégala al carrito al instante.
                         </p>
                     </div>
 
