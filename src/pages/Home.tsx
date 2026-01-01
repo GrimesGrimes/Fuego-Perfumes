@@ -28,7 +28,7 @@ export default function Home() {
     return (
         <main>
             {/* Hero Section */}
-            <section className="relative isolate min-h-[90svh] overflow-hidden py-10 lg:py-0">
+            <section className="relative isolate overflow-hidden min-h-[90svh] py-10 lg:py-0 lg:flex lg:items-center lg:min-h-[calc(100svh-72px)]">
                 {/* Background Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black via-surface to-black" />
 
@@ -88,19 +88,12 @@ export default function Home() {
                                     </svg>
                                 </Link>
 
-                                <Link
-                                    to="/catalogo#iconicas"
-                                    className="text-white/80 hover:text-white border border-white/15 hover:border-white/25 rounded-xl px-8 py-4 inline-flex justify-center transition w-full sm:w-auto"
-                                >
-                                    Ver iconicas
-                                </Link>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* ✅ REEMPLAZO de IconicCarousel: DomeGallery con TODOS los productos */}
             {/* Dome Gallery Section */}
             <section className="py-16 lg:py-24 bg-black">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -116,7 +109,7 @@ export default function Home() {
                         </p>
                     </div>
 
-                    <div className="relative h-[560px] sm:h-[640px] lg:h-[760px] rounded-[2rem] overflow-hidden border border-white/10 bg-surface">
+                    <div className="relative h-[560px] sm:h-[640px] lg:h-[760px] rounded-[2rem] overflow-hidden">
                         <DomeGallery
                             images={domeImages}
                             segments={30}                 // ✅ tiles más grandes
@@ -131,6 +124,20 @@ export default function Home() {
                             autoplaySpeedDegPerSec={7}
                             onSelectCode={handleSelectCode}  // ✅ abre QuickViewModal
                         />
+                        {/* Edge soften (blur + vignette) */}
+                        <div className="pointer-events-none absolute inset-0">
+                            {/* blur SOLO en bordes (centro nítido) */}
+                            <div
+                            className="
+                                absolute inset-0 bg-black/0 backdrop-blur-[10px]
+                                [mask-image:radial-gradient(circle,transparent_62%,black_84%)]
+                                [-webkit-mask-image:radial-gradient(circle,transparent_62%,black_84%)]
+                            "
+                            />
+
+                            {/* viñeta para “fundir” con el fondo */}
+                            <div className="absolute inset-0 [background:radial-gradient(circle,rgba(0,0,0,0)_55%,rgba(0,0,0,0.72)_100%)]" />
+                        </div>
                     </div>
                 </div>
             </section>
