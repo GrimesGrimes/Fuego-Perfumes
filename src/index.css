@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #D6B06E;
+  --color-gold-dark: #B8923A;
+  --color-gold-light: #E8C990;
+  --color-orange: #FF5A1F;
+  --color-orange-dark: #CC4816;
+  --color-surface: #0a0a0a;
+  --color-surface-light: #141414;
+  --color-surface-lighter: #1a1a1a;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --font-family-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-black text-white antialiased;
+    font-family: var(--font-family-sans);
+  }
+
+  ::selection {
+    @apply bg-gold/30 text-white;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-gold;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-white/5 backdrop-blur-sm border border-border;
+  }
+
+  .glass-dark {
+    @apply bg-black/40 backdrop-blur-md border border-border;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 bg-gold text-black font-semibold rounded-lg transition-all duration-300 hover:bg-gold-light hover:scale-105 active:scale-95 focus-visible:outline-gold;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 border border-gold text-gold font-semibold rounded-lg transition-all duration-300 hover:bg-gold hover:text-black active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 text-white/70 font-medium rounded-lg transition-all duration-200 hover:text-white hover:bg-white/10;
+  }
+
+  .badge-gold {
+    @apply inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-gold/20 text-gold border border-gold/30;
+  }
+
+  .badge-orange {
+    @apply inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-orange/20 text-orange border border-orange/30;
+  }
+
+  .badge-subtle {
+    @apply inline-flex items-center px-2 py-0.5 text-xs font-medium rounded-full bg-white/10 text-white/70 border border-white/10;
+  }
+
+  .card {
+    @apply bg-white/5 backdrop-blur-sm border border-border rounded-xl p-4 transition-all duration-300 hover:border-gold/30 hover:bg-white/8;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 bg-surface-light border border-border rounded-lg text-white placeholder:text-white/40 transition-all duration-200 focus:border-gold focus:ring-1 focus:ring-gold focus:outline-none;
+  }
+
+  .glow-gold {
+    box-shadow: 0 0 40px 10px rgba(214, 176, 110, 0.15);
+  }
+
+  .glow-orange {
+    box-shadow: 0 0 40px 10px rgba(255, 90, 31, 0.15);
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-gold to-orange bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-x-5 {
+    transform: rotateX(5deg);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+/* =========================
+   IconicCarousel (HERO) — refined premium focus
+   ========================= */
+.iconic-hero-swiper {
+  overflow: visible !important;
+}
+.iconic-hero-swiper .swiper-slide {
+  overflow: visible !important;
+}
+
+.iconic-hero-swiper .iconic-hero-inner {
+  transition: transform 520ms ease, filter 520ms ease, opacity 520ms ease;
+  transform-origin: center;
+  opacity: 0.58;
+  filter: blur(0.8px);
+  transform: translateY(2px) scale(0.93);
+}
+
+/* Los más cercanos al centro (prev/next) menos castigados */
+.iconic-hero-swiper .swiper-slide-prev .iconic-hero-inner,
+.iconic-hero-swiper .swiper-slide-next .iconic-hero-inner {
+  opacity: 0.72;
+  filter: blur(0.45px);
+  transform: translateY(1px) scale(0.96);
+}
+
+/* Centro: protagonista, pero fino */
+.iconic-hero-swiper .swiper-slide-active .iconic-hero-inner {
+  opacity: 1;
+  filter: none;
+  transform: translateY(-3px) scale(1);
+  z-index: 5;
+}
+
+/* Imagen: aquí es donde crece, no el contenedor entero */
+.iconic-hero-swiper .iconic-hero-media {
+  transition: transform 520ms ease, filter 520ms ease;
+  transform: translateY(4px) scale(0.96);
+  /* OJO: un solo filter combinado (no duplicar) */
+  filter: saturate(1.03) drop-shadow(0 18px 44px rgba(0,0,0,0.45));
+}
+
+.iconic-hero-swiper .swiper-slide-active .iconic-hero-media {
+  transform: translateY(-2px) scale(1.06);
+  filter: saturate(1.06) drop-shadow(0 28px 78px rgba(0,0,0,0.55));
+}
+
+/* Spotlight MUY sutil (sin “marco”) */
+.iconic-hero-spotlight {
+  position: absolute;
+  inset: -26px;
+  background: radial-gradient(circle at 50% 44%, rgba(214, 176, 110, 0.14), transparent 60%);
+  filter: blur(26px);
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+body.dg-scroll-lock {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: contain;
+}
+
+}
