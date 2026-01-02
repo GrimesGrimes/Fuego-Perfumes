@@ -57,7 +57,7 @@ export default function Home() {
                                         scrollSpeed={3.5}
                                         scrollEase={0.03}
                                         autoplay
-                                        autoplayInterval={2000}
+                                        autoplayInterval={3000}
                                     />
                                 </div>
                             </div>
